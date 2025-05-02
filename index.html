@@ -49,7 +49,7 @@
       height: auto;
       border-radius: 15px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-      transition: opacity 0.5s ease;
+      /* Убрано свойство transition */
     }
 
     button {
@@ -99,7 +99,7 @@
   <div class="overlay">
     <h1>Последний Выпускной</h1>
     <p>📦 Переезд — не прощание, а новое начало.</p>
-    <p><strong>⏰ 24 мая в 13:00</strong></p>  <!-- Добавлены часы ⏰ -->
+    <p><strong>⏰ 24 мая в 13:00</strong></p>
     <p>📍 Актовый зал, Главный корпус ТУСУР</p>
     <p>Приходи — мы ждём тебя, чтобы попрощаться как следует 💙</p>
 
@@ -119,29 +119,20 @@
   </div>
 
   <script>
-    const photos = ['photo1.jpg', 'photo2.jpg', 'photo3.jpg'];
+    const photos = ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo4.jpg'];
     let current = 0;
     const slide = document.getElementById('slide');
 
-    // Плавная смена фото
-    function changeImage() {
-      slide.style.opacity = 0;
-      setTimeout(() => {
-        slide.src = photos[current];
-        slide.style.opacity = 1;
-      }, 300);
-    }
-
-    // Вперёд
+    // Вперёд (мгновенная смена)
     function nextImage() {
       current = (current + 1) % photos.length;
-      changeImage();
+      slide.src = photos[current];
     }
 
-    // Назад
+    // Назад (мгновенная смена)
     function prevImage() {
       current = (current - 1 + photos.length) % photos.length;
-      changeImage();
+      slide.src = photos[current];
     }
 
     // Сохранение фото
